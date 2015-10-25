@@ -1,0 +1,90 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.acquire.main.DetailsActivity" >
+
+    <TextView
+        android:id="@+id/textView_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:focusable="true"
+    	android:focusableInTouchMode="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Name" />
+
+    <EditText
+        android:id="@+id/editText_CustomName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView_Name"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:hint="Custom Name"
+        android:inputType="textCapSentences|textAutoCorrect|textAutoComplete" />
+
+    <TextView
+        android:id="@+id/textView_Description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editText_CustomName"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginTop="5dp"
+        android:text="Description" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Actuator: YES/NO"
+        android:id="@+id/textView_Actuator"
+        android:layout_below="@+id/textView_Description"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textView_Range"
+        android:layout_below="@+id/textView_Actuator"
+        android:layout_alignParentStart="true"/>
+
+    <SeekBar
+        android:id="@+id/seekBar_Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_Range"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/button_Set"/>
+
+    <Button
+        android:id="@+id/button_Set"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set"
+        android:onClick="onButtonClick_Set"
+        android:layout_alignTop="@+id/textView_Actuator"
+        android:layout_alignEnd="@+id/editText_CustomName"
+        android:minWidth="70dp"/>
+
+    <Button
+        android:id="@+id/button_Ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onButtonClick_Ok"
+        android:text="Ok"
+        android:layout_below="@+id/seekBar_Value"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+
+</RelativeLayout>
+<!-- From: file:/D:/Android/Projetos/Acquire%201.0/res/layout/activity_details.xml -->

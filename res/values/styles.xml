@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppBaseThemeLight" parent="android:Theme.Holo.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/background_light</item>
+        <item name="android:buttonStyle">@style/buttonStyleLight</item>
+    </style>
+
+    <style name="buttonStyleLight" parent="android:Widget.Button.Small">
+        <item name="android:background">@drawable/rounded_corner_button_light</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">35dp</item>
+    </style>
+
+    <style name="DialogThemeLight" parent="android:Theme.Holo.Light.Dialog.NoActionBar">
+        <item name="android:windowBackground">@drawable/rounded_corner_dialog_light</item>
+        <item name="android:buttonStyle">@style/buttonStyleLight</item>
+    </style>
+</resources>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.acquire"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="22" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo.NoActionBar" >
+        
+		<!-- Acquisition -->
+        <activity
+            android:name="com.example.acquire.acquisition.AcquisitionActivity"
+            android:label="@string/title_activity_acquisition"
+            android:screenOrientation="portrait"
+            android:theme="@style/Background_Dialog" >
+        </activity>
+        
+        <service
+            android:name="com.example.acquire.acquisition.AcquisitionService"
+            android:exported="false"
+            android:label="AcquisitionService" >
+        </service>
+        
+        <activity
+            android:name="com.example.acquire.acquisition.LoadAcquisitionActivity"
+            android:label="@string/title_activity_load_acquisition"
+            android:screenOrientation="portrait"
+            android:theme="@style/Background_Dialog" >
+        </activity>
+        
+        <activity
+            android:name="com.example.acquire.acquisition.RecordsActivity"
+            android:label="@string/title_activity_records"
+            android:screenOrientation="portrait" >
+        </activity>
+        
+        
+        <!-- Bluetooth -->
+        <activity
+            android:name="com.example.acquire.bluetooth.BtDeviceActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Background_Dialog" >
+        </activity>
+        
+        <activity
+            android:name="com.example.acquire.bluetooth.BtServerActivity"
+            android:label="@string/title_activity_server"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <service
+            android:name="com.example.acquire.bluetooth.BtService"
+            android:exported="false"
+            android:label="BtService" >
+        </service>
+        
+        
+        <!-- Graph -->
+        <activity
+            android:name="com.example.acquire.graph.GraphActivity"
+            android:label="@string/title_activity_graph"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        
+        
+        <!-- Main -->
+        <activity
+            android:name="com.example.acquire.main.DetailsActivity"
+            android:label="@string/title_activity_details"
+            android:screenOrientation="portrait"
+            android:theme="@style/Background_Dialog" >
+        </activity>
+        
+        <activity
+            android:name="com.example.acquire.main.MainActivity"
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.example.acquire.main.OptionsActivity"
+            android:label="@string/title_activity_options"
+            android:screenOrientation="portrait"
+            android:theme="@style/Background_Dialog" >
+        </activity>
+        
+        <!-- Wifi -->
+        <activity
+            android:name="com.example.acquire.wifi.WifiDeviceActivity"
+            android:label="@string/title_activity_wifi_device"
+            android:screenOrientation="portrait"
+            android:theme="@style/Background_Dialog" >
+        </activity>
+        
+        <activity
+            android:name="com.example.acquire.wifi.WifiSearchActivity"
+            android:label="@string/title_activity_wifi_search"
+            android:screenOrientation="portrait"
+            android:theme="@style/Background_Dialog" >
+        </activity>
+        
+        <activity
+            android:name="com.example.acquire.wifi.WifiServerActivity"
+            android:label="@string/title_activity_wifi_server"
+            android:screenOrientation="portrait" >
+        </activity>
+        
+        <service
+            android:name="com.example.acquire.wifi.WifiService"
+            android:exported="false"
+            android:label="WifiService" >
+        </service>
+
+        <activity
+            android:name="com.example.acquire.wifi.WifiSetupActivity"
+            android:label="@string/title_activity_wifi_setup"
+            android:screenOrientation="portrait"
+            android:theme="@style/Background_Dialog" >
+        </activity>
+        
+        
+        
+    </application>
+
+</manifest>

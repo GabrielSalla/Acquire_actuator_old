@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/D:/Android/Projetos/Acquire%201.0/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- From: file:/D:/Android/Projetos/Acquire%201.0/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="action_settings">Settings</string>
+    <string name="app_name">Acquire</string>
+    <string name="bluetooth_must_be_enabled">Bluetooth must be enabled</string>
+    <string name="bluetooth_turned_on">Bluetooth turned ON</string>
+    <string name="connection_status">"Connection status:"</string>
+    <string name="device">Device:</string>
+    <string name="device_is_not_paired">Device is not paired</string>
+    <string name="export_data">Export data</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="ip_port">Server IP and port</string>
+    <string name="items">Items:</string>
+    <string name="list_devices">"Devices"</string>
+    <string name="list_items">List</string>
+    <string name="no_bluetooth_detected">No bluetooth detected</string>
+    <string name="paired">Paired</string>
+    <string name="paired_devices">Available devices:</string>
+    <string name="refresh">Refresh</string>
+    <string name="set_period">Set</string>
+    <string name="title_activity_acquisition">Acquisition</string>
+    <string name="title_activity_details">Details</string>
+    <string name="title_activity_graph">Graph</string>
+    <string name="title_activity_load_acquisition">LoadAcquisition</string>
+    <string name="title_activity_main">Acquire</string>
+    <string name="title_activity_options">Options</string>
+    <string name="title_activity_records">Records</string>
+    <string name="title_activity_server">Server</string>
+    <string name="title_activity_wifi_device">WifiDeviceActivity</string>
+    <string name="title_activity_wifi_search">WifiSearchActivity</string>
+    <string name="title_activity_wifi_server">WifiServerActivity</string>
+    <string name="title_activity_wifi_setup">Wi-Fi Setup</string>
+    <string name="wifi_must_be_enabled">Wifi must be enabled</string>
+    <!-- From: file:/D:/Android/Projetos/Acquire%201.0/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="AppBaseThemeLight" parent="android:Theme.Holo.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/background_light</item>
+        <item name="android:buttonStyle">@style/buttonStyleLight</item>
+    </style>
+    <style name="DialogThemeLight" parent="android:Theme.Holo.Light.Dialog.NoActionBar">
+        <item name="android:windowBackground">@drawable/rounded_corner_dialog_light</item>
+        <item name="android:buttonStyle">@style/buttonStyleLight</item>
+    </style>
+    <style name="buttonStyleLight" parent="android:Widget.Button.Small">
+        <item name="android:background">@drawable/rounded_corner_button_light</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">35dp</item>
+    </style>
+</resources>
