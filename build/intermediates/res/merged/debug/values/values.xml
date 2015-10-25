@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/D:/Android/Projetos/Acquire%201.0/res/values/dimens.xml -->
+    <!-- From: file:/C:/Users/Gabriel/Documents/Android/Acquire1.0/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/D:/Android/Projetos/Acquire%201.0/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Gabriel/Documents/Android/Acquire1.0/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_settings">Settings</string>
     <string name="app_name">Acquire</string>
@@ -37,7 +37,7 @@
     <string name="title_activity_wifi_server">WifiServerActivity</string>
     <string name="title_activity_wifi_setup">Wi-Fi Setup</string>
     <string name="wifi_must_be_enabled">Wifi must be enabled</string>
-    <!-- From: file:/D:/Android/Projetos/Acquire%201.0/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/Gabriel/Documents/Android/Acquire1.0/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseThemeLight" parent="android:Theme.Holo.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/background_light</item>

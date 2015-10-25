@@ -109,7 +109,7 @@ public class AcquisitionService extends Service{
 					
 					msgrec = ans;
 					
-					decode_message();
+					decode_message(msgrec);
 				}
                 //If developer mode is deactivated, request the values
 				else{
@@ -164,7 +164,7 @@ public class AcquisitionService extends Service{
 					
 					msgrec = ans;
 					
-					decode_message();
+					decode_message(msgrec);
 				}
                 //If developer mode is deactivated, request the list
 				else{
@@ -228,7 +228,7 @@ public class AcquisitionService extends Service{
 	}
 
 	private void init(){
-		itemList = new ArrayList<ItemData>();
+		itemList = new ArrayList<>();
 		database = new DBAdapter(this);
 	}
 
@@ -252,33 +252,55 @@ public class AcquisitionService extends Service{
 						if(str.charAt(1) == '#'){
 							isValid = true;
 							msgrec = str;
-                            //Check if the message is complete (without a '\r' at the end)
-                            if(msgrec.charAt(msgrec.length()-1) == '$'){
-                                isValid = false;
-                                decode_message();
-                            }
-                            //Check if the message is complete (with a '\r' at the end)
-                            if(msgrec.charAt(msgrec.length()-1) == '\r' && msgrec.charAt(msgrec.length()-2) == '$'){
-                                isValid = false;
-                                decode_message();
-                            }
+							//Check if the message is complete (without a '\r' at the end)
+							int first = 0, next;
+							while(true){
+								next = msgrec.indexOf("$", first + 1);
+								//Message is incomplete
+								if(next == -1){
+									break;
+								}
+								//At least one message is complete
+								//Decode the message
+								decode_message(msgrec.substring(first, next + 1));
+								//Remove the part already decoded
+								msgrec = msgrec.substring(next + 1);
+								//Check if there's another message starting
+								first = msgrec.indexOf("$", 0);
+                                //If didn't find another '$'
+								if(first == -1){
+									isValid = false;
+									break;
+								}
+							}
 						}
 					}
 					else{
-                        //Keep appending while the message is valid, until the end of the message
+						//Keep appending while the message is valid, until the end of the message
 						if(isValid){
 							//Append the received message
 							msgrec = msgrec + str;
-							//Check if the message is complete (without a '\r' at the end)
-							if(msgrec.charAt(msgrec.length()-1) == '$'){
-								isValid = false;
-								decode_message();
+							//Check if the message is complete
+							int first = 0, next;
+							while(true){
+								next = msgrec.indexOf("$", first + 1);
+								//Message is incomplete
+								if(next == -1){
+									break;
+								}
+								//At least one message is complete
+								//Decode the message
+								decode_message(msgrec.substring(first, next + 1));
+								//Remove the part already decoded
+								msgrec = msgrec.substring(next + 1);
+								//Check if there's another message starting
+								first = msgrec.indexOf("$", 0);
+								//If didn't find another '$'
+								if(first == -1){
+									isValid = false;
+									break;
+								}
 							}
-                            //Check if the message is complete (with a '\r' at the end)
-                            if(msgrec.charAt(msgrec.length()-1) == '\r' && msgrec.charAt(msgrec.length()-2) == '$'){
-                                isValid = false;
-                                decode_message();
-                            }
 						}
 					}
 				}
@@ -574,9 +596,9 @@ public class AcquisitionService extends Service{
 	}
 
 	//Decode the received message
-	private void decode_message(){
+	private void decode_message(String msg){
 		//If received the items list
-		if(msgrec.contains("#it_list")){
+		if(msg.contains("#it_list")){
 			if(has_list)
 				return;
 
@@ -586,56 +608,55 @@ public class AcquisitionService extends Service{
 			while(true){
                 ItemData new_item;
 
-				str_pos = 9;
 				//Search for the name of the item in the message
 				String it_name = "#" + item_number/10 + item_number%10 + "n";
-				str_pos = msgrec.indexOf(it_name);
+				str_pos = msg.indexOf(it_name);
 				//If didn't find the name on the message, stop looking
 				if(str_pos == -1)
 					break;
 				str_pos += 4;
 				//Gets the name
-				next_symbol = msgrec.indexOf("#", str_pos);
+				next_symbol = msg.indexOf("#", str_pos);
 				if(next_symbol == -1){
-					next_symbol = msgrec.indexOf("$", str_pos);
+					next_symbol = msg.indexOf("$", str_pos);
 				}
-				String name = msgrec.substring(str_pos, next_symbol);
+				String name = msg.substring(str_pos, next_symbol);
 
 				//Search for the description of the item in the message
 				String it_desc = "#" + item_number/10 + item_number%10 + "d";
-				str_pos = msgrec.indexOf(it_desc);
+				str_pos = msg.indexOf(it_desc);
 				str_pos += 4;
 				//Gets the description
-				next_symbol = msgrec.indexOf("#", str_pos);
+				next_symbol = msg.indexOf("#", str_pos);
 				if(next_symbol == -1){
-					next_symbol = msgrec.indexOf("$", str_pos);
+					next_symbol = msg.indexOf("$", str_pos);
 				}
-				String desc = msgrec.substring(str_pos, next_symbol);
+				String desc = msg.substring(str_pos, next_symbol);
 
                 //Search for the value of the item in the message
                 String it_val = "#" + item_number/10 + item_number%10 + "v";
-                str_pos = msgrec.indexOf(it_val);
+                str_pos = msg.indexOf(it_val);
                 str_pos += 4;
                 //Gets the value
-                next_symbol = msgrec.indexOf("#", str_pos);
+                next_symbol = msg.indexOf("#", str_pos);
                 if(next_symbol == -1){
-                    next_symbol = msgrec.indexOf("$", str_pos);
+                    next_symbol = msg.indexOf("$", str_pos);
                 }
-                String val = msgrec.substring(str_pos, next_symbol);
+                String val = msg.substring(str_pos, next_symbol);
 
                 int iVal = Integer.parseInt(val);
 
 
                 //Check if it's an actuator
                 String it_act = "#" + item_number/10 + item_number%10 + "a";
-                str_pos = msgrec.indexOf(it_act);
+                str_pos = msg.indexOf(it_act);
                 if(str_pos != -1){
                     str_pos += 4;
-                    next_symbol = msgrec.indexOf("#", str_pos);
+                    next_symbol = msg.indexOf("#", str_pos);
                     if(next_symbol == -1){
-                        next_symbol = msgrec.indexOf("$", str_pos);
+                        next_symbol = msg.indexOf("$", str_pos);
                     }
-                    String strRange = msgrec.substring(str_pos, next_symbol);
+                    String strRange = msg.substring(str_pos, next_symbol);
 
                     int divider = strRange.indexOf("|");
 
@@ -680,25 +701,25 @@ public class AcquisitionService extends Service{
 		}
 		
 		//If received values of the items
-		if(msgrec.contains("#it_val")){
+		if(msg.contains("#it_val")){
 			int str_pos, next_symbol;
 			
 			for(ItemData item : itemList){
 				str_pos = 8;
 				//Search for the value of the item in the message
 				String it_val = item.getCode() + "v";
-				str_pos = msgrec.indexOf(it_val, str_pos);
+				str_pos = msg.indexOf(it_val, str_pos);
 				//If didn't find the name on the message, check the next item
 				if(str_pos == -1){
 					continue;
 				}
 				str_pos += 4;
 				//Gets the value
-				next_symbol = msgrec.indexOf("#", str_pos);
+				next_symbol = msg.indexOf("#", str_pos);
 				if(next_symbol == -1){
-					next_symbol = msgrec.indexOf("$", str_pos);
+					next_symbol = msg.indexOf("$", str_pos);
 				}
-				String val = msgrec.substring(str_pos, next_symbol);
+				String val = msg.substring(str_pos, next_symbol);
 				
 				int ival = Integer.parseInt(val);
 				
